@@ -1,0 +1,45 @@
+ubloomsy/
+├── public/                  # Static files
+│   └── favicon.svg          
+│
+├── src/
+│   ├── assets/              # Images, icons, audio
+│   ├── components/          # Reusable UI (buttons, inputs, cards)
+│   │   ├── ui/              # Tiny atomic UI pieces (e.g., <Button />, <Input />)
+│   │   └── layout/          # Header, Sidebar, Footer
+│   │
+│   ├── pages/               # Full page views
+│   │   ├── Landing.tsx
+│   │   ├── Login.tsx
+│   │   ├── Register.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Moodboard.tsx
+│   │   ├── Goal.tsx
+│   │   └── SafeSpace.tsx
+│   │
+│   ├── features/            # State + logic for sections
+│   │   ├── auth/            # Login/Register logic
+│   │   ├── dreams/          # Dream creation, goal steps
+│   │   ├── moodboard/       # Moodboard logic
+│   │   └── safeSpace/       # Meditation, chat AI
+│   │
+│   ├── utils/               # Helper functions, OpenAI prompts
+│   ├── hooks/               # Custom React hooks
+│   ├── services/            # API calls (e.g., axios instances)
+│   ├── context/             # Global state/context providers
+│   ├── routes/              # React Router setup
+│   ├── App.tsx              # Main app structure
+│   ├── main.tsx             # Entry point
+│   └── index.css            # Tailwind entry point
+│
+├── tailwind.config.js       
+├── postcss.config.js        
+├── tsconfig.json            
+├── vite.config.ts           
+├── package.json             
+└── .env                     # For keys (e.g., VITE_OPENAI_KEY)
+
+Keep your components small & focused (buttons shouldn’t care about dreams)
+Put OpenAI & Firebase calls inside services/
+Group dream-related logic inside features/dreams
+Store prompts (for GPT) inside utils/prompts.ts
