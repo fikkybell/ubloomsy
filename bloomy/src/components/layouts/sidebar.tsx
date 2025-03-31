@@ -2,20 +2,24 @@ import dashIcon from '../../assets/moodboard.svg'
 import safeIcon from '../../assets/safe.svg'
 import goalIcon from '../../assets/goal.svg'
 import logout from '../../assets/logout.svg'
-
+import { NavLink } from 'react-router-dom';
 
 const menu = [
     {images : dashIcon,
-     text : "DASHBOARD"
+     text : "DASHBOARD",
+     path : '/'
     },
     {images : goalIcon,
-     text : "SET GOAL"
+     text : "SET GOAL",
+     path : '/goal'
     },
     {images : dashIcon,
-        text : "MOODBOARD"
+        text : "MOODBOARD",
+        path : '/moodboard'
        },
     {images : safeIcon,
-     text : "SAFE SPACE"
+     text : "SAFE SPACE",
+     path : '/safe'
     }
 ]
 const sidebar = ():any => {
@@ -30,15 +34,26 @@ const sidebar = ():any => {
         <div className="flex flex-col justify-center h-full mt-12">
   <ul className="w-full space-y-2">
     {menu.map((img, index) => (
-      <li
+      
+         <NavLink 
+              to= {img.path}
+              end
+              className={({ isActive }) => 
+                `block rounded ${isActive ? 'bg-[#E7F5F5] text-[#6DB3B0] transition-all w-full' : 'hover:bg-white'}`
+              }
+            >
+              <li
         key={index}
-        className="hover:bg-[#E7F5F5] hover:text-[#6DB3B0] transition-all py-4 px-14 "
+        className="py-4 px-14 "
       >
-        <div className="flex items-center gap-7 text-[15px] px-4 ">
-        <img className="h-5 w-5 object-contain" src={img.images} alt={img.text} />
-        <span className="whitespace-nowrap">{img.text}</span>
-      </div>
-      </li>
+              <div className="flex items-center gap-7 text-[15px] px-4 ">
+              <img className="h-5 w-5 object-contain" src={img.images} alt={img.text} />
+              <span className="whitespace-nowrap">{img.text}</span>
+              </div>
+              </li>
+            </NavLink>
+       
+     
     ))}
     <li className='flex items-center text-[14px] gap-7 px-16 py-24 cursor-pointer'>
         <img src={logout} alt="" className='h-6 w-6 object-contain' />
