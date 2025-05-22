@@ -3,9 +3,14 @@ import logo from '../assets/logo.svg'
 import Button from '../components/ui/button'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import ProgressList from '../components/ui/progress'
 
 // import { Outlet } from 'react-router-dom';
-const percentage = 66
+const categoriesData = [
+  { category: 'Health', progress: '-1/5', percentage: 60 },
+  { category: 'Career', progress: '-5/5', percentage: 100 },
+  { category: 'Education', progress: '-2/4', percentage: 50 },
+]
 
 
 const Dashboard = () => {
@@ -36,31 +41,17 @@ const Dashboard = () => {
             <div className="w-3/12  h-[241px]">
             <p className='text-[#7B7E7F] text-sm'>Your Progress</p>
             <div>
-            <div className='bg-white rounded-md w-full text-sm text-[#767676] p-3 mt-2'>
-                <div className='flex justify-between'>
-                  <div className='flex gap-2'>
-                  <div className=" h-10 w-10 rounded-full bg-[#A8D9D7]"></div>
-                  <div>
-                    <p>Health</p>
-                    <p>-1/5</p>
-                  </div>
-                  </div>
-                  <div className='w-10'>
-                  <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#9F9F9F',
-                    pathColor: '#A8D9D7',
-                    trailColor: '#eee',
-                    textSize: '27px',
-                  })}
-                />
-                  </div>
-                </div>
-                </div>
+            {categoriesData.map((item, index) => (
+            <ProgressList
+            key={index}
+            categories={item.category}
+            progress={item.progress}
+            percentage={item.percentage}
+            classname={index % 2 === 0 ? 'bg-[#A8D9D7]' : 'bg-white'}
+            />
+            ))}
             </div>
-            </div>
+</div>
             <div className="w-[32%] bg-white  h-[241px] rounded-2xl shadow-sm"></div>
            </div>
           </main>
