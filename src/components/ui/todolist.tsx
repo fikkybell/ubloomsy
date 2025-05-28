@@ -7,6 +7,7 @@ interface listProps {
     pending: 'bg-[#FCF5DF]',
     completed: 'bg-[#ECF7F7]',
     ongoing: 'bg-[#F49974]',
+    new: 'bg-[#F49974]',
   }
   const TodoList = ({ name, status}: listProps)=> {
     return (

@@ -46,7 +46,7 @@ const sidebar = ():any => {
         key={index}
         className="py-4 px-14 "
       >
-              <div className="flex items-center gap-7 text-[15px] px-4 ">
+              <div className="flex items-center gap-7 text-sm px-4 ">
               <img className="h-5 w-5 object-contain" src={img.images} alt={img.text} />
               <span className="whitespace-nowrap">{img.text}</span>
               </div>

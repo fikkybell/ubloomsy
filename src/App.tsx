@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Wrap dashboard routes with the layout */}
         <Route element={<DashboardLayout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="goal" element={<Goals/>} />

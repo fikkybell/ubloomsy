@@ -10,9 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
+    "openai": "^4.103.0",
     "react": "^19.0.0",
+    "react-calendar": "^5.1.0",
+    "react-circular-progressbar": "^2.2.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.4.1",
+    "recharts": "^2.15.3",
+    "unsplash-js": "^7.0.19",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
