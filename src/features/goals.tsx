@@ -3,8 +3,8 @@ import arrow from "../assets/arrow.svg";
 import star from "../assets/star.svg";
 import Button from "../components/ui/button";
 import checkmark from "../assets/checkmark.svg";
-import edit from "../assets/edit.svg";
 import Todo from "../components/ui/todo";
+import EditModal from "../components/ui/editmodal";
 import { v4 as uuidv4 } from "uuid";
 import { generateStepsAndMood } from "../utils/openAI";
 import { fetchMoodboardImages } from "../utils/imageGenerator";
@@ -29,6 +29,9 @@ const Goals = () => {
   const [moodboard, setMoodboard] = useState<string[]>([]);
   const [todoList, setTodoList] = useState<TodoItem[]>([]);
   const [loading, setLoading] = useState(false);
+  const [editingTodos, setEditingTodos] = useState<TodoItem[] | null>(null);
+
+
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const imageToReplace = useRef<number | null>(null);
@@ -200,8 +203,24 @@ const Goals = () => {
       </div>
       {todoList.length > 0 && (
   <div className="flex gap-8">
-    <Todo name={goal} categories={category} todos={todoList} />
+    <Todo 
+  name={goal} 
+  categories={category} 
+  todos={todoList} 
+  onEdit={(todos) => setEditingTodos(todos)} 
+/>
+{editingTodos && (
+  <EditModal
+    todos={editingTodos}
+    onClose={() => setEditingTodos(null)}
+    onSave={(updatedTodos) => {
+      setTodoList(updatedTodos);
+      setEditingTodos(null);
+    }}
+  />
+)}
   </div>
+
 )}
     </div>
   );
